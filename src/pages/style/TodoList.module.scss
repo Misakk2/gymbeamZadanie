@@ -1,0 +1,21 @@
+.todoList {
+    &__title {
+        @apply text-2xl font-bold mb-4;
+    }
+
+    &__input {
+        @apply flex-grow mr-2 p-2 border rounded text-black;
+    }
+
+    &__button {
+        @apply px-4 py-2 bg-blue-500 text-white rounded;
+
+        &--delete {
+            @apply ml-auto px-2 py-1 bg-red-500 text-white rounded;
+        }
+    }
+
+    &__item {
+        @apply flex items-center mb-2;
+    }
+}
