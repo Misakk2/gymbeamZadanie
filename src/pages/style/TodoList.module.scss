@@ -3,8 +3,27 @@
     &__input {
         @apply flex-grow p-2 border rounded text-black bg-white;
 
+        -webkit-appearance: none;
+        appearance: none;
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"><path d="M7 10l5 5 5-5z"/></svg>');
+        background-repeat: no-repeat;
+        background-position: right 0.5rem center;
+        background-size: 1.25em;
+
+        &[type='text'] {
+            -webkit-appearance: none;
+            appearance: none;
+            background-image: none;
+        }
+
         :global(.dark) & {
             @apply text-white bg-gray-700 border-gray-600;
+        }
+
+        &[type='date'] {
+            -webkit-appearance: initial;
+            appearance: initial;
+            background-image: none;
         }
     }
 
