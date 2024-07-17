@@ -1,14 +1,14 @@
 import { useState, useEffect, useCallback, useMemo } from 'react';
 import { useToast } from '../../Toast/context/ToastContext';
 import  * as api  from '@/pages/api/api';
-import { AddTodoPayload, Priority, Todo } from '@/pages/types';
+import { AddTodoPayload, Priority, Tags, Todo } from '@/pages/types';
 
 type SortType = 'newest' | 'priority';
 
 export const useTodos = () => {
     const [todos, setTodos] = useState<Todo[]>([]);
     const [sortType, setSortType] = useState<SortType>('newest');
-    const [filterTags, setFilterTags] = useState<string[]>([]);
+    const [filterTags, setFilterTags] = useState<Tags[]>([]);
     const { addToast } = useToast();
 
     const sortedAndFilteredTodos = useMemo(() => {
@@ -16,7 +16,7 @@ export const useTodos = () => {
         // Filter by tags
         if (filterTags.length > 0) {
             result = result.filter(todo => 
-                todo.tags.some(tag => filterTags.includes(tag))
+                todo.tags.some((tag: Tags) => filterTags.includes(tag))
             );
         }
         // Sort

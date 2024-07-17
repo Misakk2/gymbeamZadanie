@@ -100,7 +100,7 @@ export const TodoList: React.FC = () => {
                         <button
                             key={tag}
                             onClick={() => handleFilterTagClick(tag)}
-                            className={`${styles.todoList__tag} ${filtersTags.includes(tag) && styles['todoList__button--active']}`}
+                            className={`${styles.todoList__tag} ${filtersTags.includes(tag) ? styles['todoList__tag--active'] : ''}`}
                         >
                             {tag}
                         </button>
