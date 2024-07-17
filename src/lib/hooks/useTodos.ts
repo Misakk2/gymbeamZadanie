@@ -1,11 +1,11 @@
 import { useState, useEffect, useCallback, useMemo } from 'react';
-import { useToast } from '../../Toast/context/ToastContext';
-import  * as api  from '@/pages/api/api';
-import { AddTodoPayload, Priority, Tags, Todo } from '@/pages/types';
+import { useToast } from '../../pages/components/Toast/context/ToastContext';
+import  * as api  from '../api/api';
+import { AddTodoPayload, Priority, Tags, Todo } from '../types';
 
 type SortType = 'newest' | 'priority';
 
-export const useTodos = () => {
+const useTodos = () => {
     const [todos, setTodos] = useState<Todo[]>([]);
     const [sortType, setSortType] = useState<SortType>('newest');
     const [filterTags, setFilterTags] = useState<Tags[]>([]);
@@ -13,20 +13,19 @@ export const useTodos = () => {
 
     const sortedAndFilteredTodos = useMemo(() => {
         let result = todos;
-        // Filter by tags
         if (filterTags.length > 0) {
             result = result.filter(todo => 
-                todo.tags.some((tag: Tags) => filterTags.includes(tag))
+                todo.tag && filterTags.includes(todo.tag)
             );
         }
-        // Sort
         if (sortType === 'newest') {
             return result.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
         } else {
             const priorityOrder: { [key in Priority]: number } = { high: 3, medium: 2, low: 1 };
             return result.sort((a, b) => priorityOrder[b.priority] - priorityOrder[a.priority]);
         }
-    }, [todos, sortType, filterTags]);
+    }, [todos, sortType, filterTags]);    
+    
 
     const fetchTodos = useCallback(async () => {
         try {
@@ -98,3 +97,5 @@ export const useTodos = () => {
         setFilterTags 
     };
 };
+
+export default useTodos;

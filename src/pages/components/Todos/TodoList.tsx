@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import styles from '../../style/TodoList.module.scss';
-import { useTodos } from './hooks/useTodos';
-import { TodoItem } from './components/TodoItem';
-import { Priority, Tags } from '@/pages/types';
+import TodoItem from './components/TodoItem';
+import useTodos from '@/lib/hooks/useTodos';
+import { Priority, Tags } from '@/lib/types';
 
 
-export const TodoList: React.FC = () => {
+const TodoList: React.FC = () => {
     const [newTodo, setNewTodo] = useState('');
     const [priority, setPriority] = useState<Priority>('medium');
     const [dueDate, setDueDate] = useState<string>('');
@@ -123,3 +123,5 @@ export const TodoList: React.FC = () => {
         </div>
     );
 };
+
+export default TodoList;

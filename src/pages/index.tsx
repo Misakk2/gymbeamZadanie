@@ -1,6 +1,6 @@
 import { Open_Sans } from "next/font/google";
 import DarkModeToggle from "./components/DarkModeToggle";
-import { TodoList } from "./components/Todos/TodoList";
+import TodoList from "./components/Todos/TodoList";
 import Toasts from "./components/Toast/Toasts";
 
 

@@ -7,7 +7,7 @@ export interface Todo {
     title: string;
     completed: boolean;
     priority: Priority;
-    dueDate: string | null;
+    dueDate: string;
     tag: Tags;
     createdAt: string;
 }
@@ -15,7 +15,7 @@ export interface Todo {
 export interface AddTodoPayload {
     title: string;
     priority: Priority;
-    dueDate: string | null;
+    dueDate: string;
     tag: string;
 }
 

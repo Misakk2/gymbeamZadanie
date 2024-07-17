@@ -1,12 +1,17 @@
-import { ToastProvider } from "./components/Toast/context/ToastContext";
+
 import "./style/global.scss";
 import type { AppProps } from "next/app";
+import dynamic from 'next/dynamic'
 
+const DynamicToastProvider = dynamic(
+  () => import('./components/Toast/context/ToastContext').then((mod) => mod.ToastProvider),
+  { ssr: false }
+)
 function App({ Component, pageProps }: AppProps) {
   return (
-    <ToastProvider>
+    <DynamicToastProvider>
       <Component {...pageProps} />
-    </ToastProvider>
+    </DynamicToastProvider>
   );
 }
 
