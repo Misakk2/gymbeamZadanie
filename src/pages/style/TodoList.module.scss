@@ -1,21 +1,66 @@
 .todoList {
-    &__title {
-        @apply text-2xl font-bold mb-4;
-    }
 
     &__input {
-        @apply flex-grow mr-2 p-2 border rounded text-black;
+        @apply flex-grow mr-2 p-2 border rounded text-black bg-white;
+
+        :global(.dark) & {
+            @apply text-white bg-gray-700 border-gray-600;
+        }
     }
 
     &__button {
-        @apply px-4 py-2 bg-blue-500 text-white rounded;
+        @apply px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600;
+
+        :global(.dark) & {
+            @apply bg-blue-600 hover:bg-blue-700;
+        }
 
         &--delete {
-            @apply ml-auto px-2 py-1 bg-red-500 text-white rounded;
+            @apply ml-auto px-2 py-1 bg-red-500 text-white rounded hover:bg-red-600;
+
+            :global(.dark) & {
+                @apply bg-red-600 hover:bg-red-700;
+            }
         }
     }
 
     &__item {
-        @apply flex items-center mb-2;
+        @apply flex items-center mb-2 p-2 rounded gap-6 bg-white;
+
+        :global(.dark) & {
+            @apply bg-gray-800;
+        }
+
+        &--completed {
+            @apply bg-gray-100;
+
+            :global(.dark) & {
+                @apply bg-gray-700;
+            }
+        }
+
+        &--overdue {
+            @apply bg-red-100;
+
+            :global(.dark) & {
+                @apply bg-red-900;
+            }
+        }
+    }
+
+    &__tag {
+        @apply px-2 py-1 rounded bg-gray-200 text-black;
+
+        :global(.dark) & {
+            @apply bg-gray-700 text-white;
+        }
+
+        &--active {
+            @apply bg-blue-500 text-white;
+
+            :global(.dark) & {
+                @apply bg-blue-600;
+            }
+        }
     }
 }
