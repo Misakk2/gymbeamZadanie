@@ -30,7 +30,7 @@ export const ToastProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         setToasts([...toasts, newToast]);
         setTimeout(() => {
             removeToast(newToast.id);
-        }, 5000000000);
+        }, 10000);
     };
 
     const removeToast = (id: number) => {

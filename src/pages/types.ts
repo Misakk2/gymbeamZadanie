@@ -1,4 +1,5 @@
 export type Priority = 'low' | 'medium' | 'high';
+export type Tags = 'others' | 'work' | 'personal' | 'shopping';
 
 export interface Todo {
     id: string;
@@ -6,15 +7,14 @@ export interface Todo {
     completed: boolean;
     priority: Priority;
     dueDate: string | null;
-    tags: string[];
-    createdAt: string;
+    tag: Tags;
 }
 
 export interface AddTodoPayload {
     title: string;
     priority: Priority;
     dueDate: string | null;
-    tags: string[];
+    tag: string;
 }
 
 export interface UpdateTodoPayload extends Partial<Omit<Todo, 'id'>> {

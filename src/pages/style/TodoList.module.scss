@@ -1,7 +1,7 @@
 .todoList {
 
     &__input {
-        @apply flex-grow mr-2 p-2 border rounded text-black bg-white;
+        @apply flex-grow p-2 border rounded text-black bg-white;
 
         :global(.dark) & {
             @apply text-white bg-gray-700 border-gray-600;
@@ -25,7 +25,7 @@
     }
 
     &__item {
-        @apply flex items-center mb-2 p-2 rounded gap-6 bg-white;
+        @apply flex items-center mb-2 p-2 rounded gap-6 bg-gray-50;
 
         :global(.dark) & {
             @apply bg-gray-800;
